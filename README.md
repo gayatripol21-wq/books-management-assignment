@@ -1,92 +1,205 @@
-Books Management System – WordPress Assignment
+# Books Management System – WordPress Assignment
 
-About the Project
+## About the Project
 
-This project is a simple Books Management System built in WordPress as part of an assignment.
+This project was developed as part of a WordPress technical assignment. The objective was to create a simple system for managing and displaying books while restricting access to authenticated users.
 
-The goal was to create a custom post type called Books, store book-related information, restrict access to logged-in users, and display the content on the frontend using custom templates and shortcodes.
+The solution includes a custom post type for books, custom fields for storing book information, access control for both individual book pages and the books listing page, a custom shortcode with pagination, and a responsive frontend layout.
 
-The project was developed using WordPress, Advanced Custom Fields (ACF), custom PHP, WordPress hooks, and responsive CSS.
+The focus of this project was on functionality, clean implementation, and adherence to WordPress best practices.
 
-Features Implemented
+---
 
-Custom Post Type
+## About No Code Structure Builder
 
-A custom post type called Books was created.
+For creating the Books Custom Post Type, I used a WordPress plugin developed by me called **No Code Structure Builder**.
 
-Each book contains:
+The plugin provides a visual interface for creating WordPress content structures such as Custom Post Types and helps reduce repetitive setup work during development.
 
-Title
-Author
-Genre
-Published Date
-Description
-Access Restriction
+For this assignment, the plugin was used only for generating the Books Custom Post Type. All assignment-specific functionality, including custom fields integration, login-based access restriction, custom templates, shortcode implementation, pagination, and frontend customization, was developed separately using custom WordPress code, WordPress hooks, and APIs.
 
-Book content is only accessible to logged-in users.
+---
 
-If a guest user tries to access a book page or books listing page, they see the following message:
+## Features Implemented
 
-You must be logged in to view this content. Please log in or register.
+### Custom Post Type – Books
 
-This functionality was implemented using WordPress authentication checks and hooks.
+A Custom Post Type called **Books** was created to manage book entries separately from standard WordPress posts.
 
-Single Book Page
+Each book contains the following information:
 
-A custom template was created to display:
+* Title
+* Author
+* Genre
+* Published Date
+* Description
 
-Book Title
-Author
-Genre
-Published Date
-Description
-Books Listing Page
+Custom fields were implemented using Advanced Custom Fields (ACF).
 
-A custom shortcode was created:
+---
 
-[books_list]
+### Access Restriction
+
+Access to book content is restricted to logged-in users only.
+
+The following pages are protected:
+
+* Individual Book Pages
+* Books Listing Page
+
+If a guest user attempts to access restricted content, the following message is displayed:
+
+> You must be logged in to view this content. Please log in or register.
+
+This functionality was implemented using WordPress authentication checks and the `template_redirect` hook.
+
+---
+
+### Single Book Page
+
+A custom template was created to display complete book information, including:
+
+* Book Title
+* Author
+* Genre
+* Published Date
+* Description
+
+The layout was kept simple and readable while ensuring compatibility across devices.
+
+---
+
+### Books Listing Page
+
+A custom shortcode was developed:
+
+`[books_list]`
 
 The shortcode displays:
 
-Book Title (linked to the book page)
-Author
-Genre
+* Book Title (linked to the single book page)
+* Author
+* Genre
 
-Pagination has also been implemented with a limit of 5 books per page.
+Pagination has been implemented with a limit of **5 books per page**.
 
-Responsive Design
+---
 
-Basic responsive styling was added to ensure the pages remain readable and usable on desktop, tablet, and mobile devices.
+### Responsive Design
 
-Development Approach
+Basic responsive styling was added to ensure the content remains readable and user-friendly on:
 
-For creating the Books Custom Post Type, I used my own WordPress plugin called No Code Structure Builder.
+* Desktop devices
+* Tablets
+* Mobile devices
 
-The plugin helps generate WordPress content structures through a visual interface.
+---
 
-All assignment-specific functionality was developed separately using custom WordPress code, including:
+## Technologies Used
 
-Login restriction
-Custom single book template
-Books listing shortcode
-Pagination
-Frontend styling
-WordPress hooks and APIs
-Technologies Used
-WordPress
-PHP
-Advanced Custom Fields (ACF)
-WordPress Hooks
-WP_Query
-Shortcodes
-HTML
-CSS
-Live Demo
+* WordPress
+* PHP
+* Advanced Custom Fields (ACF)
+* WordPress Hooks & Filters
+* WP_Query
+* Shortcodes
+* HTML
+* CSS
 
-Books Listing Page:
+---
+
+## Project Structure
+
+```text
+README.md
+
+books-assignment/
+└── books-assignment.php
+
+custom-template/
+└── single-book.php
+
+screenshots/
+├── books-listing.png
+├── single-book.png
+└── login-restriction.png
+```
+
+---
+
+## Installation & Testing
+
+### Setup
+
+1. Install WordPress.
+2. Install and activate Advanced Custom Fields (ACF).
+3. Upload the assignment files to the WordPress installation.
+4. Activate the Books Assignment plugin.
+5. Create the required ACF fields:
+
+   * Author
+   * Genre
+   * Published Date
+6. Create and publish sample book entries.
+7. Create a page and add the shortcode:
+
+```text
+[books_list]
+```
+
+---
+
+### Testing the Solution
+
+#### Books Listing Page
+
+Visit the Books Listing page and verify:
+
+* Books are displayed correctly.
+* Title links open individual book pages.
+* Pagination works correctly after 5 books.
+
+#### Single Book Page
+
+Open any book and verify that:
+
+* Title is displayed.
+* Author is displayed.
+* Genre is displayed.
+* Published Date is displayed.
+* Description is displayed.
+
+#### Access Restriction
+
+1. Log out of WordPress.
+2. Attempt to access:
+
+   * A single book page
+   * The books listing page
+3. Verify that access is blocked and the login message is displayed.
+
+---
+
+## Screenshots
+
+The repository includes screenshots demonstrating:
+
+* Books Listing Page
+* Single Book Page
+* Login Restriction Message
+
+---
+
+## Live Demo
+
+### Books Listing Page
 
 https://floralwhite-goat-242089.hostingersite.com/books-list/
 
-Sample Book Page:
+### Sample Book Page
 
 https://floralwhite-goat-242089.hostingersite.com/book/atomic-habits/
+
+---
+
+Thank you for taking the time to review my submission. I enjoyed working on this assignment and building the solution using WordPress best practices while keeping the implementation simple, functional, and easy to extend.
